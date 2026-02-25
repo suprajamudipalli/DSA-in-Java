@@ -1,0 +1,37 @@
+class Solution {
+    public int findJudge(int n, int[][] trust) {
+        int[] outdegree=new int[n+1];
+        int[] indegree=new int[n+1];
+
+        for(int i=0;i<trust.length;i++){
+            int tw=trust[i][0];
+            int wt=trust[i][1];
+            outdegree[tw]++;
+            indegree[wt]++;
+        }
+        for(int i=0;i<n;i++){
+            if(indegree[i]==n-1 && outdegree[i]==0){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+Note: We are given:
+
+n people (numbered 1 to n)
+
+trust[i] = [a, b]
+→ person a trusts person b
+
+We must find the judge.
+A person is judge if:
+
+ Everyone else trusts them
+→ indegree = n - 1
+
+ They trust nobody
+→ outdegree = 0
+
+If no such person exists → return -1.
