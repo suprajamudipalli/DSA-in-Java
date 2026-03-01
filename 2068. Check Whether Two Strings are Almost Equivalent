@@ -1,0 +1,31 @@
+class Solution {
+    public boolean checkAlmostEquivalent(String word1, String word2) {
+        int[] count=new int[26];
+        for(int i=0;i<word1.length();i++){
+            count[word1.charAt(i)-'a']++;
+            count[word2.charAt(i)-'a']--;
+        }
+        for(int i=0;i<26;i++){
+            if(Math.abs(count[i])>3){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+Note:
+Create a frequency difference array
+Make an int[26] array to represent letters 'a' to 'z'.
+Each index stores the difference between frequencies of the two strings.
+Traverse both strings together
+For every character:
+Increase count for word1
+Decrease count for word
+So the array directly stores:
+frequency(word1) - frequency(word2)
+Check the absolute difference
+Loop through the 26 letters.
+If Math.abs(count[i]) > 3, return false.
+If no difference exceeds 3
+
+Return true because all letters satisfy the condition.
