@@ -1,0 +1,24 @@
+class Solution {
+    public int minPartitions(String n) {
+        int maxdigit=0;
+        for(char c:n.toCharArray()){
+            int digit=c-'0';
+            maxdigit=Math.max(maxdigit,digit);
+        }
+        return maxdigit;
+    }
+}
+
+question:
+A decimal number is called deci-binary if each of its digits is either 0 or 1 without any leading zeros. 
+For example, 101 and 1100 are deci-binary, while 112 and 3001 are not. Given a string n that represents a 
+positive decimal integer, return the minimum number of positive deci-binary numbers needed so that they sum 
+up to n. Example 1: Input: n = "32" Output: 3 Explanation: 10 + 11 + 11 = 32
+
+Note:
+Each deci-binary number can give only 0 or 1 at each digit position.
+So to form a digit like 7, we need at least 7 numbers stacked there.
+Every digit position works independently.
+The position with the largest digit decides how many numbers we need.
+So the answer is simply the maximum digit in the string.
+ex: for 4567834 i.e 4,5,6,7,8,3,4 max numbers stacked here is 8 so 8 is the ans.
