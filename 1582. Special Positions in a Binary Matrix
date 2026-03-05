@@ -1,0 +1,33 @@
+class Solution {
+    public int numSpecial(int[][] mat) {
+        int m = mat.length;
+        int n = mat[0].length;
+        
+        int[] row = new int[m];
+        int[] col = new int[n];
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(mat[i][j]==1){
+                    row[i]++;
+                    col[j]++;
+                }
+            }
+        }
+        
+        int count=0;
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(mat[i][j]==1 && row[i]==1 && col[j]==1){
+                    count++;
+                }
+            }
+        }
+        
+        return count;
+    }
+}
+
+Note: special postiion is when there is only one 1 in the row and the column...so frst we create two arrays for rows and cols and count no of 1 in each row and column
+and then we traverse the array to meet the condition where mat[i][j]==1 && row[i]==1 && col[j]==1..!
