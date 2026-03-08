@@ -1,0 +1,16 @@
+class Solution {
+    public String findDifferentBinaryString(String[] nums) {
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<nums.length;i++){
+            char ch=nums[i].charAt(i);
+            if(ch=='0') sb.append('1');
+            else sb.append('0');
+        }
+        return sb.toString();
+    }
+}
+
+Steps: Take the i-th string and look at the i-th character in that string. Flip the bit (if it is 0 change it to 1, and 
+if it is 1 change it to 0). Add this flipped bit to the result string. Repeat this process for all n strings.
+Example: Input = ["01","10"]. For i = 0, the string is "01". The 0th bit is 0, so flip it to 1 → result becomes "1". For i = 1, 
+the string is "10". The 1st bit is 0, so flip it to 1 → result becomes "11". Output: "11".
