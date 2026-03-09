@@ -1,0 +1,27 @@
+class Solution {
+    public int maxArea(int[] height) {
+        int i=0;
+        int j=height.length-1;
+        int result=0;
+        while(i<j){
+            int h=Math.min(height[i],height[j]);
+            int width=j-i;
+            int area=h*width;
+            result=Math.max(result,area);
+            if(height[i]<height[j]) i++;
+            else j--;
+        }
+        return result;
+    }
+}
+
+Note:
+To solve this problem, think about what determines how much water a container can hold.
+The water between two lines depends on two factors: the distance between them (width) and the 
+height of the shorter line, because water will spill from the shorter side. So the area is 
+calculated as (right index − left index) × min(height[left], height[right]). To maximize this 
+area efficiently, we start with two pointers at the extreme ends of the array because that gives the maximum possible width. 
+After calculating the area, we move the pointer that has the smaller height, since the smaller height is limiting the water level. 
+Moving the taller line would only reduce the width without increasing the height, so it cannot give a better area. By repeatedly
+calculating the area and moving the smaller-height pointer inward, we explore better possibilities until the pointers meet, while
+keeping track of the maximum area found.
