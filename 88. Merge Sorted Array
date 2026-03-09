@@ -1,0 +1,29 @@
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i=m-1;
+        int j=n-1;
+        int k=m+n-1;
+        while(i>=0 && j>=0){
+            if(nums1[i]>nums2[j]){
+                nums1[k]=nums1[i];
+                i--;
+            }
+            else {
+                nums1[k]=nums2[j];
+                j--;
+            }
+            k--;
+        }
+        while(j>=0){
+            nums1[k]=nums2[j];
+            j--;
+            k--;
+        }
+        
+    }
+}
+
+Since both arrays are already sorted, we compare their largest elements from the end to avoid disturbing the existing order.
+We keep three pointers: one at the last real element of nums1, one at the last element of nums2, and one at the last position of nums1 
+where the merged element should go. At each step, we place the larger element at the end of nums1 and move the corresponding pointer backward
+until all elements from nums2 are merged.
