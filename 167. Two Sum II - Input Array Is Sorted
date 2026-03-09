@@ -1,0 +1,19 @@
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int left=0;
+        int right=numbers.length-1;
+        while(left<right){
+            int sum=numbers[left]+numbers[right];
+            if(sum==target){
+                return new int[]{left+1,right+1};
+            }
+            if(sum<target) left++;
+            else right--;
+        }
+        return new int[]{};
+    }
+}
+
+Since the array is sorted, we place two pointers at the start (left) and end (right) of the array. At each step we check the sum of
+numbers[left] and numbers[right]: if the sum equals the target we return the indices; if the sum is smaller we move left forward to increase
+the sum, and if the sum is larger we move right backward to decrease the sum. By adjusting pointers this way, we efficiently find the pair in O(n) time.
