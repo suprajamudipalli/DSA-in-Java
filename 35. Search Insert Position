@@ -1,0 +1,21 @@
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int i=0;
+        int j=nums.length-1;
+        while(i<=j){
+            int mid=(i+j)/2;
+            if(nums[mid]==target) return mid;
+            if(target<nums[mid]){
+                j=mid-1;
+            }
+            else{
+            i=mid+1;
+            }
+        }
+        return i;
+    }
+}
+Note: This approach uses binary search on the sorted array to efficiently find the target or its correct insert position.
+We repeatedly calculate the middle index and compare the target with nums[mid]; if the target is smaller we search the left 
+half (j = mid - 1), otherwise we search the right half (i = mid + 1). If the loop ends without finding the target, the pointer i 
+indicates the position where the target should be inserted to maintain the sorted order.
