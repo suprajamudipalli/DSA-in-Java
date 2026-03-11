@@ -1,0 +1,20 @@
+class Solution {
+    public int bitwiseComplement(int n) {
+        StringBuilder sd=new StringBuilder(Integer.toBinaryString(n));
+        for(int i=0;i<sd.length();i++){
+            char ch=sd.charAt(i);
+            if(ch=='0'){
+                sd.setCharAt(i,'1');
+            }
+            else{
+                sd.setCharAt(i,'0');
+            }
+        }
+    return Integer.parseInt(sd.toString(),2);    }
+}
+
+Note: 
+The number n is first converted into its binary form using Integer.toBinaryString() and stored in a StringBuilder
+so the bits can be modified easily. Then the program loops through each bit and flips it: if the bit is '0' it becomes '1', 
+and if it is '1' it becomes '0'. Finally, the modified binary string is converted back to a decimal integer using Integer.parseInt(..., 2) and returned
+as the complement.
