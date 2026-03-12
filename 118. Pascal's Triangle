@@ -1,0 +1,23 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result=new ArrayList<>();
+        for(int i=0;i<numRows;i++){
+            List<Integer> row=new ArrayList<>();
+            for(int j=0;j<=i;j++){
+                if(j==0 || j==i){
+                    row.add(1);
+                }
+                else{
+                    row.add(result.get(i-1).get(j-1)+ result.get(i-1).get(j));
+                }
+            }
+            result.add(row);
+        }
+        return result;
+    }
+}
+
+Note :
+The approach is to build Pascal’s Triangle row by row using a List of Lists. For each row i, we create a new list 
+and fill it with values where the first and last elements are always 1. For the remaining elements, we calculate them using the 
+sum of the two numbers from the previous row stored in result, then add the row to result.
