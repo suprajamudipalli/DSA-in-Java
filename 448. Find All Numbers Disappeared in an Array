@@ -1,0 +1,43 @@
+Approach-1:
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        int len=nums.length;
+        List<Integer> res=new ArrayList<>();
+        for(int i=1;i<=len;i++){
+        boolean isFound=false;
+        for(int j=0;j<len;j++){
+            if(nums[j]==i){
+                isFound=true;
+                break;
+            }
+        }
+        if(!isFound){
+            res.add(i);
+        }
+        }
+        return res;
+    }
+}
+
+this is the frst apprach ive used to solve this problem but while submitting the problem in leetcode i got tle i.e time limit exceed so i solved the 
+same problem using a different approachh!...
+
+Apprach-2:
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> res=new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            int index=Math.abs(nums[i])-1;
+            if(nums[index]>0){
+                nums[index]=-nums[index];
+            }
+        }
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>0) res.add(i+1);
+        }
+        return res;
+    }
+}
+
+We traverse the array and use each value to mark its corresponding index as negative, indicating that number exists. After marking, we scan the array 
+again and any index with a positive value represents a missing number. Those indices +1 are added to the result list.
