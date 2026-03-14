@@ -1,0 +1,21 @@
+public static int hammingWeight(int n) {
+	int ones = 0;
+    	while(n!=0) {
+    		ones = ones + (n & 1);
+    		n = n>>>1;
+    	}
+    	return ones;
+}
+
+Note:
+The algorithm counts the number of set bits in an integer. It checks the last bit using n & 1 and adds it to the count.
+Then it right shifts the number using >>> 1 to process the next bit until the number becomes zero.
+
+5 = 101
+Steps:
+n (binary)	n & 1	ones	n >>> 1
+101	           1	 1	    10
+10	           0	  1	     1
+1	             1	  2	     0
+Final result:
+ones = 2 
