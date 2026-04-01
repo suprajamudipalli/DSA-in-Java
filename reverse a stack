@@ -1,0 +1,70 @@
+static void insertAtBottom(Stack<Integer> stack, int x) {
+    if (stack.isEmpty()) {
+        stack.push(x);
+        return;
+    }
+
+    int top = stack.pop();
+    insertAtBottom(stack, x);
+    stack.push(top);
+}
+
+static void reverse(Stack<Integer> stack) {
+    if (!stack.isEmpty()) {
+        int top = stack.pop();
+        reverse(stack);
+        insertAtBottom(stack, top);
+    }
+}
+
+Step1:reverse(stack)
+Callstackworkslikethis:
+reverse([1,2,3])
+→pop3
+→reverse([1,2])
+→pop2
+→reverse([1])
+→pop1
+→reverse([])
+Nowstackbecomesempty:
+[]
+🔹Step2:Startinsertingatbottom
+Nowrecursiongoesbackward
+Insert1atbottom:
+[1]
+Insert2atbottom:
+Pop1
+Insert2
+Push1back
+[2,1]
+Insert3atbottom:
+Pop1
+Pop2
+Insert3
+Push2
+Push1
+[3,2,1]
+🔥KeyFunctionExplained
+1.insertAtBottom()
+👉Thisisthemaintrick
+inttop=stack.pop();
+insertAtBottom(stack,x);
+stack.push(top);
+👉Meaning:
+Removeeverything
+Putxatbottom
+Puteverythingback
+2.reverse()
+inttop=stack.pop();
+reverse(stack);
+insertAtBottom(stack,top);
+👉Meaning:
+Removetop
+Reverseremaining
+Putremovedelementatbottom
+🧠VisualizationTrick
+Thinklikethis:
+👉reverse():
+“Takeoutallbooksfromstack”
+👉insertAtBottom():
+“Placefirstbookatbottom,thenrebuild”
