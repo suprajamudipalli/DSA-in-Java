@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the vertices:");
+        int v = sc.nextInt();
+
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+
+        for (int i = 0; i < v; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        System.out.println("Enter number of edges:");
+        int E = sc.nextInt();
+
+        System.out.println("Enter edges (u v):");
+        for (int i = 0; i < E; i++) {
+            int u = sc.nextInt();
+            int x = sc.nextInt();
+
+            graph.get(u).add(x);
+            graph.get(x).add(u);
+        }
+
+        System.out.println("Adjacency List:");
+        for (int i = 0; i < v; i++) {
+            System.out.print(i + " -> ");
+            for (int node : graph.get(i)) {
+                System.out.print(node + " ");
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
