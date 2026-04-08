@@ -48,3 +48,21 @@ public class Main{
 BFS uses a Queue (FIFO)
 Add node → explore → add its neighbors
 Continue until queue is empty
+
+sample i/p: 5
+7
+0 1
+0 2
+0 3
+0 4
+1 4
+2 3
+2 4
+sample o/p:
+0->1 2 3 4 
+1->0 4 
+2->0 3 4 
+3->0 2 
+4->0 1 2 
+BFS TRAVERSAL
+0 1 2 3 4 
