@@ -1,0 +1,58 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int V=sc.nextInt();
+        ArrayList<ArrayList<Integer>> graph=new ArrayList<>();
+        for(int i=0;i<V;i++){
+            graph.add(new ArrayList<>());
+        }
+        int e=sc.nextInt();
+        for(int i=0;i<e;i++){
+            int u=sc.nextInt();
+            int v=sc.nextInt();
+            graph.get(u).add(v);
+            graph.get(v).add(u);
+        }
+        for(int i=0;i<V;i++){
+            System.out.print(i+"->");
+            for(int node : graph.get(i)){
+                System.out.print(node+ " ");
+            }
+            System.out.println();
+        }
+        boolean[] visited=new boolean[V];
+        System.out.println("DFS TRAVERSAL:")
+        dfs(graph,0,visited);
+    }
+    public static void dfs(ArrayList<ArrayList<Integer>> graph, int node,boolean[] visited){
+        visited[node]=true;
+        System.out.print(node+" ");
+        for(int neighbour: graph.get(node)){
+            if(!visited[neighbour]){
+                dfs(graph, neighbour, visited);
+            }
+        }
+
+EXAMPLE : SAMPLE I/P 5
+7
+0 1
+0 2
+0 3
+0 4
+1 4
+2 3
+2 4
+SAMPLE O/P:
+0->1 2 3 4 
+1->0 4 
+2->0 3 4 
+3->0 2 
+4->0 1 2 
+DFS TRAVERSAL:
+0 1 4 2 3 
+
+    
+
+    }
+}
