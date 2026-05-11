@@ -1,0 +1,29 @@
+class Solution {
+    public int romanToInt(String s) {
+        HashMap<Character,Integer> map=new HashMap<>();
+        map.put('I',1);
+        map.put('V',5);
+        map.put('X',10);
+        map.put('L',50);
+        map.put('C',100);
+        map.put('D',500);
+        map.put('M',1000);
+        int sum=0;
+        for(int i=0;i<s.length();i++){
+            int current=map.get(s.charAt(i));
+            if(i<s.length()-1 && current<map.get(s.charAt(i+1))){
+                sum-=current;
+            }else{
+                sum+=current;
+            }
+        }
+        return sum;
+    }
+}
+
+Explantion:
+We store all Roman symbols and their integer values in a HashMap.
+Then we traverse the string from left to right and compare the current symbol with the next symbol.
+If the current value is smaller than the next value, we subtract it because it forms cases like IV = 4 or IX = 9.
+Otherwise, we add the value normally.
+Finally, the accumulated sum gives the integer equivalent of the Roman numeral.
