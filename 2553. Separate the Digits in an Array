@@ -1,0 +1,29 @@
+class Solution {
+    public int[] separateDigits(int[] nums) {
+        ArrayList<Integer> list=new ArrayList<>();
+        for(int num: nums){
+            Stack<Integer> st=new Stack<>();
+            if(num==0){
+                st.push(0);
+            }
+            while(num>0){
+                st.push(num%10);
+                num/=10;
+            }
+            while(!st.isEmpty()){
+                list.add(st.pop());
+            }
+        }
+        int[] ans=new int[list.size()];
+        for(int i=0;i<list.size();i++){
+            ans[i]=list.get(i);
+        }
+        return ans;
+    }
+}
+
+Explantion:
+For each number in the array, we extract digits using % 10 and remove digits using / 10.
+Since digits come in reverse order, we first store them in a Stack.
+The stack reverses them back to the original order when we pop elements.
+Each popped digit is added to an ArrayList, and finally the list is converted into an int[] array and returned.
