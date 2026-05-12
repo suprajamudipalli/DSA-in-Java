@@ -1,0 +1,17 @@
+Explanation: The tasks are sorted based on (minimum required energy - actual energy used) so that tasks needing a larger extra energy buffer are completed first.
+We maintain a variable ans representing the minimum initial energy required so far.
+For each task, we update ans using Math.max(ans + actual, minimum) to ensure we have enough energy to both start and complete the task.
+This greedy approach guarantees the minimum initial energy needed to finish all tasks efficiently.
+The overall time complexity is O(n log n) due to sorting.
+
+Code: 
+class Solution {
+    public int minimumEffort(int[][] tasks) {
+        Arrays.sort(tasks,(a,b)-> a[1]-a[0]-(b[1]-b[0]));
+        int ans=0;
+        for(int[] task: tasks){
+            ans=Math.max(ans+ task[0],task[1]);
+        }
+        return ans;
+    }
+}
