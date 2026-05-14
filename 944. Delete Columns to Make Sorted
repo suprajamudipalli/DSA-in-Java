@@ -1,0 +1,23 @@
+explanation:
+Since the condition depends on vertical ordering, we examine the array column by column instead of row by row.
+For each column, we compare every pair of adjacent strings to check whether characters are in non-decreasing order.
+If we find any character that is greater than the character below it, that column violates sorting rules.
+Such a column must be deleted, so we increase the count and move to the next column.
+After checking all columns, the total count gives the minimum deletions required.
+code:
+class Solution {
+    public int minDeletionSize(String[] strs) {
+        int rows=strs.length;
+        int cols=strs[0].length();
+        int count=0;
+        for(int col=0;col<cols;col++){
+            for(int row=0;row<rows-1;row++){
+                if(strs[row].charAt(col)>strs[row+1].charAt(col)){
+                    count++;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+}
