@@ -1,0 +1,21 @@
+class Solution {
+    public List<List<Integer>> minimumAbsDifference(int[] arr) {
+        Arrays.sort(arr);
+        List<List<Integer>> anss=new ArrayList<>();
+        int minDiff=Integer.MAX_VALUE;
+        for(int i=1;i<arr.length;i++){
+            minDiff=Math.min(minDiff, arr[i]-arr[i-1]);
+        }
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]-arr[i-1]==minDiff){
+                anss.add(Arrays.asList(arr[i-1],arr[i]));
+            }
+        }
+        return anss;
+    }
+}
+Explantion:
+First, sort the array so that elements with the smallest differences become adjacent.
+Traverse the sorted array once to find the minimum absolute difference between neighboring elements.
+Traverse again and collect all adjacent pairs whose difference equals the minimum difference.
+Return the list of these pairs as the final answer.
