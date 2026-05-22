@@ -1,0 +1,23 @@
+class Solution {
+    public int minimumBoxes(int[] apple, int[] capacity) {
+        int tot=0;
+        for(int i=0;i<apple.length;i++) tot+=apple[i];
+        Arrays.sort(capacity);
+        int count=0;
+        int sorted=0;
+        for(int i=capacity.length-1;i>=0;i--){
+            sorted+=capacity[i];
+            count++;
+            if(sorted>=tot){
+                return count;
+            }
+        }
+        return count;
+    }
+}
+
+Explanation:
+First, calculate the total number of apples needed to store.
+Sort the capacity array so we can use the largest boxes first.
+Start picking boxes from the end of the sorted array and keep adding their capacities.
+Count how many boxes are used until the total capacity becomes greater than or equal to total apples.
