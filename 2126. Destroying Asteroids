@@ -1,0 +1,19 @@
+class Solution {
+    public boolean asteroidsDestroyed(int mass, int[] asteroids) {
+        Arrays.sort(asteroids);
+        long curr=mass;
+        for( int asteroid: asteroids){
+            
+            if(curr < asteroid){
+                return false;
+            }
+            curr+=asteroid;
+        }
+        return true;
+    }
+}
+Approach:
+Sort the asteroids in ascending order.
+Start with the given mass.
+If the current mass is smaller than an asteroid, return false.
+Otherwise destroy it, add its mass to your mass, and continue; if all asteroids are destroyed, return true.
