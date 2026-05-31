@@ -1,0 +1,15 @@
+class Solution {
+    public int getCommon(int[] nums1, int[] nums2) {
+        Map<Integer,Integer> map=new HashMap<>();
+        for(  int num: nums1){
+            map.put(num,1);
+        }
+        int ans=Integer.MAX_VALUE;
+        for(int nums: nums2){
+            if(map.containsKey(nums)){
+                ans=Math.min(ans,nums);
+            }
+        }
+        return ans== Integer.MAX_VALUE? -1: ans;
+    }
+}
