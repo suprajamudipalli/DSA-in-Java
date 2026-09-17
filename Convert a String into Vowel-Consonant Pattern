@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.nextLine();
+        String result = "";
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            boolean vowel = (ch == 'a' || ch == 'e' || ch == 'i' ||
+                             ch == 'o' || ch == 'u');
+
+            char current;
+
+            if (vowel) {
+                current = 'V';
+            } else {
+                current = 'C';
+            }
+
+            if (result.length() == 0 ||
+                result.charAt(result.length() - 1) != current) {
+                
+                result += current;
+            }
+        }
+
+        System.out.println(result);
+    }
+}
+
+sample i/p: gheiso
+sample o/p: CVCV
