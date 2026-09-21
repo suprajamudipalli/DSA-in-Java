@@ -1,0 +1,32 @@
+cosider a number n. the ith digit n is called either maxima or minima if the digits at i-1 and i+1 are either greater than or less than
+the digit i repspectively. The slope of n is defined as the no of maxima and minima present in n. If there is no digit at i-1 or i+2 for diit 
+at i of the number n then do not consider digit at i for maxima or minima . Your task id to find and print the sum of the slooes of the number
+with in the range a and b both incclusive. sample input a=1201 b= 1210
+Code:
+import java.util.*;
+public class Main{
+    static int slope(int n){
+        String s=String.valueOf(n);
+        int count=0;
+        for(int i=1;i<s.length()-1;i++){
+            int prev= s.charAt(i-1)-'0';
+            int next= s.charAt(i+1)-'0';
+            int curr= s.charAt(i)-'0';
+            if(curr>prev && curr> next || curr<prev && curr < next){
+                count++;
+            }
+        }
+        return count;
+        
+    }
+    public static void main(String[] args){
+        Scanner sc= new Scanner(System.in);
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        int sum=0;
+        for(int n=a;n<=b;n++){
+            sum+=slope(n);
+        }
+        System.out.println(sum);
+    }
+}
