@@ -1,0 +1,4 @@
+import math
+num= int(input())
+no_of_digits= int(math.log10(num))+1
+print(no_of_digits)
